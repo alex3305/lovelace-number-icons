@@ -1,0 +1,22 @@
+{
+  "name": "ha-number-icons-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "generate": "npx tsc && node index.js",
+    "test": "npx tsc && node index.js test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "text-to-svg": "^3.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/text-to-svg": "^3.1.4",
+    "typescript": "^5.4.4"
+  }
+}
