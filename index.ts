@@ -2,12 +2,12 @@ import { readFileSync, writeFileSync } from "fs";
 import process from 'process';
 import TextToSVG, { Anchor } from 'text-to-svg';
 
-function generateFile(outputFile: string, minify: boolean) {
+function generateFile(outputFile: string, minify: boolean, max: number, step: number) {
     console.log('Generating...')
     let output = "";
     let icons = new Map<string, any>();
 
-    for (var i = 0.0; i <= 5; i = i + 0.5) {
+    for (var i = 0; i <= max; i = i + step) {
         let svg = textToSVG(font, i.toString());
         icons.set(i.toString(), svg);
     }
@@ -60,7 +60,7 @@ const output = 'dist/ha-number-icons.js'
 
 const args = process.argv.slice(2);
 if (args == undefined || args.length == 0) {
-    generateFile(output, false);
+    generateFile(output, false, 30, 0.5);
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
     console.log(getSVG(font, 'test'));
