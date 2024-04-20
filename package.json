@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/sofia-sans-extra-condensed": "^5.0.12",
     "text-to-svg": "^3.1.5"
   },
   "devDependencies": {

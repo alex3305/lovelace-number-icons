@@ -2,7 +2,7 @@ import process from 'process';
 import TextToSVG, { Anchor } from 'text-to-svg';
 
 function getSVG(font: string, text: string) {
-    const ttsModule = TextToSVG.loadSync('fonts/' + font);
+    const ttsModule = TextToSVG.loadSync(font);
     const options = {
         x: 0,
         y: 0,
@@ -14,7 +14,7 @@ function getSVG(font: string, text: string) {
 }
 
 function textToSVG(font: string, text: string) {
-    const ttsModule = TextToSVG.loadSync('fonts/' + font);
+    const ttsModule = TextToSVG.loadSync(font);
     const options = {
         x: 0,
         y: 0,
@@ -35,14 +35,16 @@ function textToSVG(font: string, text: string) {
     };
 }
 
-const font = 'SofiaSansExtraCondensed-SemiBold.ttf';
+const font = 'node_modules/@fontsource/sofia-sans-extra-condensed/files/sofia-sans-extra-condensed-latin-600-normal.woff';
 
 const args = process.argv.slice(2);
 if (args == undefined || args.length == 0) {
-    console.log('generating')
-    for (var i = 0.0; i <= 5; i = i + 0.5) {
+    console.log('Generating...')
+
+    for (var i = 0.0; i <= 30; i = i + 0.5) {
         console.log(textToSVG(font, i.toString()));
     }
+
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
     console.log(getSVG(font, 'test'));
