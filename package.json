@@ -1,23 +1,30 @@
 {
   "name": "ha-number-icons-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Home Assistant Number Icons and Generator",
+  "main": "build/index.js",
   "scripts": {
     "build": "npx tsc",
-    "generate": "npx tsc && node build/ generate",
-    "test": "npx tsc && node build/ test"
+    "generate": "npx tsc && node build/index.js generate",
+    "test": "npx tsc && node build/index.js test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Home Assistant",
+    "icons",
+    "svg"
+  ],
+  "author": "Alex van den Hoogen",
+  "license": "MIT",
   "dependencies": {
+    "@fontsource/sofia-sans-condensed": "^5.0.13",
     "@fontsource/sofia-sans-extra-condensed": "^5.0.12",
-    "text-to-svg": "^3.1.5"
+    "text-to-svg": "^3.1.5",
+    "uglify-js": "^3.17.4"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "@types/text-to-svg": "^3.1.4",
+    "@types/uglify-js": "^3.17.5",
     "typescript": "^5.4.4"
   }
 }

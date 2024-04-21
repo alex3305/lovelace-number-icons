@@ -1,24 +1,27 @@
 import * as fs from "node:fs";
 import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
+import { minify } from "uglify-js";
 
 export class SvgGenerator {
     
     distDirectory: string;
     
-    distFile: string;
+    fileName: string;
     
     font: string;
 
-    constructor(font: string, distDirectory: string, distFile: string) { 
+    output: string;
+
+    constructor(font: string, distDirectory: string, fileName: string) { 
         this.font = font;
         this.distDirectory = distDirectory;
-        this.distFile = distFile;
+        this.fileName = fileName;
+        this.output = '';
     }
 
     generateFile(max: number, step: number): void {
         console.log('Generating...')
-        let output = "";
         let icons = new Map<string, any>();
     
         for (var i = 0; i <= max; i = i + step) {
@@ -26,22 +29,36 @@ export class SvgGenerator {
             icons.set(i.toString(), svg);
         }
     
-        output += fs.readFileSync('./header.partial.js');
-        output += '\n\n'
-        output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`
-        output += '\n\n'
-        output += fs.readFileSync('./lookup.partial.js');
-        output += '\n'
+        this.output += fs.readFileSync('./header.partial.js');
+        this.output += `\n//\n// Font Source: ${this.font}\n//\n\n`;
+        this.output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`;
+        this.output += '\n\n';
+        this.output += fs.readFileSync('./lookup.partial.js');
+        this.output += '\n';
 
         if (!fs.existsSync(this.distDirectory)) {
             fs.mkdirSync(this.distDirectory);
         }
     
-        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.distFile}`, output, { flag: 'w' });
-        console.log(`Written to ${this.distFile}`);
+        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.js`, this.output, { flag: 'w' });
+        console.log(`Written to ${this.fileName}`);
+    }
+
+    minifyGeneratedFile(): void {
+        if (!fs.existsSync(this.distDirectory)) {
+            fs.mkdirSync(this.distDirectory);
+        }
+
+        if (this.output == '') {
+            console.error('ERROR: Please generate SVG data before minifying.');
+            return;
+        }
+
+        let result = minify(this.output);
+        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.min.js`, result.code, { flag: 'w' });
     }
     
-    getSVG(font: string, text: string) : string {
+    getSVG(font: string, text: string): string {
         const ttsModule = TextToSVG.loadSync(font);
         const options = {
             x: 0,
@@ -53,7 +70,7 @@ export class SvgGenerator {
         return ttsModule.getSVG(text, options);
     }
     
-    textToSVG(font: string, text: string) : any {
+    textToSVG(font: string, text: string): any {
         const ttsModule = TextToSVG.loadSync(font);
         const options = {
             x: 0,
