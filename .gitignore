@@ -1,3 +1,7 @@
+# Build / generated output
+build/
+dist/
+
 # Created by https://www.toptal.com/developers/gitignore/api/linux,windows,visualstudiocode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,visualstudiocode,node
 

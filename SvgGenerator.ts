@@ -1,12 +1,18 @@
-import { readFileSync, writeFileSync } from "fs";
+import * as fs from "node:fs";
+import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
 
 export class SvgGenerator {
-    font: string;
+    
+    distDirectory: string;
+    
     distFile: string;
+    
+    font: string;
 
-    constructor(font: string, distFile: string) { 
+    constructor(font: string, distDirectory: string, distFile: string) { 
         this.font = font;
+        this.distDirectory = distDirectory;
         this.distFile = distFile;
     }
 
@@ -20,14 +26,18 @@ export class SvgGenerator {
             icons.set(i.toString(), svg);
         }
     
-        output += readFileSync('./header.partial.js');
+        output += fs.readFileSync('./header.partial.js');
         output += '\n\n'
         output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`
         output += '\n\n'
-        output += readFileSync('./lookup.partial.js');
+        output += fs.readFileSync('./lookup.partial.js');
         output += '\n'
+
+        if (!fs.existsSync(this.distDirectory)) {
+            fs.mkdirSync(this.distDirectory);
+        }
     
-        writeFileSync(this.distFile, output, { flag: 'w' });
+        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.distFile}`, output, { flag: 'w' });
         console.log(`Written to ${this.distFile}`);
     }
     
