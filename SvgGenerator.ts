@@ -20,12 +20,12 @@ export class SvgGenerator {
         this.output = '';
     }
 
-    generateFile(max: number, step: number): void {
+    generateFile(max: number, step: number, suffix?: string): void {
         console.log('Generating...')
         let icons = new Map<string, any>();
     
-        for (var i = 0; i <= max; i = i + step) {
-            let svg = this.textToSVG(this.font, i.toString());
+        for (let i = 0; i <= max; i = i + step) {
+            let svg = this.textToSVG(this.font, `${i.toFixed(1).toString()}${suffix}`);
             icons.set(i.toString(), svg);
         }
     
@@ -63,7 +63,7 @@ export class SvgGenerator {
         const options = {
             x: 0,
             y: 0,
-            fontSize: 32,
+            fontSize: 24,
             anchor: "top" as Anchor,
         }
     

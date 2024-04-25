@@ -11,11 +11,11 @@ let svgGenerator = new SvgGenerator(font, distDirectory, distFile);
 if (args == undefined || args.length == 0) {
     console.error("ERROR: Run with either generate or test arguments...");
 } else if ('generate' == args[0]) {
-    svgGenerator.generateFile(30, 0.5);
+    svgGenerator.generateFile(30, 0.5, '°');
     svgGenerator.minifyGeneratedFile();
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
-    console.log(svgGenerator.getSVG(font, 'test'));
+    console.log(svgGenerator.getSVG(font, '88.8°'));
 } else {
     console.error(`ERROR: Invalid argument supplied ${args[0]}...`);
 }
