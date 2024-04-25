@@ -4,6 +4,10 @@ import TextToSVG, { Anchor } from 'text-to-svg';
 import { minify } from "uglify-js";
 
 export class SvgGenerator {
+
+    static Anchor = "top" as Anchor;
+
+    static FontSize = 20;
     
     distDirectory: string;
     
@@ -63,8 +67,8 @@ export class SvgGenerator {
         const options = {
             x: 0,
             y: 0,
-            fontSize: 24,
-            anchor: "top" as Anchor,
+            fontSize: SvgGenerator.FontSize,
+            anchor: SvgGenerator.Anchor,
         }
     
         return ttsModule.getSVG(text, options);
@@ -75,8 +79,8 @@ export class SvgGenerator {
         const options = {
             x: 0,
             y: 0,
-            fontSize: 32,
-            anchor: "top" as Anchor,
+            fontSize: SvgGenerator.FontSize,
+            anchor: SvgGenerator.Anchor,
         }
         
         const metrics = ttsModule.getMetrics(text, options);

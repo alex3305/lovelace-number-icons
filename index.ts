@@ -15,7 +15,7 @@ if (args == undefined || args.length == 0) {
     svgGenerator.minifyGeneratedFile();
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
-    console.log(svgGenerator.getSVG(font, '88.8°'));
+    console.log(svgGenerator.getSVG(font, '88.5°'));
 } else {
     console.error(`ERROR: Invalid argument supplied ${args[0]}...`);
 }
