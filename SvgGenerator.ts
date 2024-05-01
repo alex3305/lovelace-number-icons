@@ -26,6 +26,7 @@ export class SvgGenerator {
 
     generateFile(max: number, step: number, suffix?: string, additionalValues?: string[]): void {
         console.log('Generating...')
+        const version = this.getPackageVersion();
         let icons = new Map<string, any>();
     
         for (let i = 0; i <= max; i = i + step) {
@@ -45,7 +46,7 @@ export class SvgGenerator {
         }
     
         this.output += fs.readFileSync('./header.partial.js');
-        this.output += `\n//\n// Font Source: ${this.font}\n//\n\n`;
+        this.output += `\n//\n// Font Source: ${this.font}\n// Generator version: ${version}\n\n`;
         this.output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`;
         this.output += '\n\n';
         this.output += fs.readFileSync('./lookup.partial.js');
@@ -71,6 +72,11 @@ export class SvgGenerator {
 
         let result = minify(this.output);
         fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.min.js`, result.code, { flag: 'w' });
+    }
+
+    getPackageVersion(): string {
+        const pj = require('../package.json')
+        return pj.version;
     }
     
     getSVG(font: string, text: string): string {

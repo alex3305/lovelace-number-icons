@@ -2,6 +2,7 @@
 
 ## 1.1.1
 - Add additional values, besides numbers
+- Add version to generated js
 
 ## 1.1.0
 - Add suffix for font
