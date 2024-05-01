@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
-import { minify } from "uglify-js";
+import { InlineFunctions, minify } from "uglify-js";
 
 export class SvgGenerator {
 
@@ -24,13 +24,24 @@ export class SvgGenerator {
         this.output = '';
     }
 
-    generateFile(max: number, step: number, suffix?: string): void {
+    generateFile(max: number, step: number, suffix?: string, additionalValues?: string[]): void {
         console.log('Generating...')
         let icons = new Map<string, any>();
     
         for (let i = 0; i <= max; i = i + step) {
-            let svg = this.textToSVG(this.font, `${i.toFixed(1).toString()}${suffix}`);
-            icons.set(i.toString(), svg);
+            icons.set(
+                i.toString(), 
+                this.textToSVG(this.font, `${i.toFixed(1).toString()}${suffix}`)
+            );
+        }
+
+        if (Array.isArray(additionalValues) && additionalValues.length) {
+            for (let val of additionalValues) {
+                icons.set(
+                    val.toLowerCase(),
+                    this.textToSVG(this.font, val)
+                );
+            }
         }
     
         this.output += fs.readFileSync('./header.partial.js');

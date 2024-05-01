@@ -11,7 +11,7 @@ let svgGenerator = new SvgGenerator(font, distDirectory, distFile);
 if (args == undefined || args.length == 0) {
     console.error("ERROR: Run with either generate or test arguments...");
 } else if ('generate' == args[0]) {
-    svgGenerator.generateFile(30, 0.5, '°');
+    svgGenerator.generateFile(28, 0.5, '°', ['Off', 'Uit']);
     svgGenerator.minifyGeneratedFile();
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
