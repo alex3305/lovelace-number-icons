@@ -25,21 +25,24 @@ export class SvgGenerator {
         this.output = '';
     }
 
-    generateFile(max: number, step: number, suffix?: string, additionalValues?: string[]): void {
+    generateFile(min: number, max: number, step: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
         console.log('Generating...')
         let icons = new Map<string, any>();
     
-        for (let i = 0; i <= max; i = i + step) {
-            icons.set(
-                i.toString(), 
-                this.textToSVG(this.font, `${i.toFixed(1).toString()}${suffix}`)
-            );
+        for (let i = min; i <= max; i = i + step) {
+            let text = `${i.toFixed(1).toString()}${suffix}`;
+
+            if (padding && max >= 10 && i < 10) {
+                text = ` ${i.toFixed(1).toString()}${suffix} `;
+            }
+
+            icons.set(i.toString(), this.textToSVG(this.font, text));
         }
 
-        if (Array.isArray(additionalValues) && additionalValues.length) {
+        if (additionalValues.length) {
             for (let val of additionalValues) {
                 icons.set(
-                    val.toLowerCase(),
+                    val.toLowerCase().trim(),
                     this.textToSVG(this.font, val)
                 );
             }

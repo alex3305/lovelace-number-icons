@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.2
+- Add optional padding for lower values
+
 ## 1.1.1
 - Add additional values, besides numbers
 - Add version to generated js
