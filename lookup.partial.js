@@ -23,3 +23,4 @@ window.customIconsets["num"] = getIcon;
 
 window.customIcons = window.customIcons || {};
 window.customIcons["num"] = { getIcon, getIconList };
+

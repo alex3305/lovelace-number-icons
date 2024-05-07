@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
 import { InlineFunctions, minify } from "uglify-js";
+import { version } from './package.json';
 
 export class SvgGenerator {
 
@@ -26,7 +27,6 @@ export class SvgGenerator {
 
     generateFile(max: number, step: number, suffix?: string, additionalValues?: string[]): void {
         console.log('Generating...')
-        const version = this.getPackageVersion();
         let icons = new Map<string, any>();
     
         for (let i = 0; i <= max; i = i + step) {
@@ -50,6 +50,8 @@ export class SvgGenerator {
         this.output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`;
         this.output += '\n\n';
         this.output += fs.readFileSync('./lookup.partial.js');
+        this.output += `const version = '${version}';`;
+        this.output += fs.readFileSync('./version.partial.js');
         this.output += '\n';
 
         if (!fs.existsSync(this.distDirectory)) {
@@ -72,11 +74,6 @@ export class SvgGenerator {
 
         let result = minify(this.output);
         fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.min.js`, result.code, { flag: 'w' });
-    }
-
-    getPackageVersion(): string {
-        const pj = require('../package.json')
-        return pj.version;
     }
     
     getSVG(font: string, text: string): string {
