@@ -2,6 +2,7 @@
 
 ## 1.1.4
 - Moved to single template
+- Updated readme with usage
 
 ## 1.1.3 _(unreleased)_
 - Updated readme

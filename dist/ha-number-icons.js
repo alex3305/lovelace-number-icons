@@ -2,7 +2,7 @@
 // By Alex van den Hoogen
 // 
 // Font source:       node_modules/@fontsource/sofia-sans-condensed/files/sofia-sans-condensed-latin-700-normal.woff
-// Generator version: 1.1.2
+// Generator version: 1.1.4
 // 
 
 const icons = {
@@ -1399,5 +1399,5 @@ window.customIconsets["num"] = getIcon;
 window.customIcons = window.customIcons || {};
 window.customIcons["num"] = { getIcon, getIconList };
 
-const version = '1.1.2';
+const version = '1.1.4';
 console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");
