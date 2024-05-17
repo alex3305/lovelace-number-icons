@@ -1,3 +1,12 @@
+// Generated ha-number-icons.js
+// By Alex van den Hoogen
+// 
+// Font source:       {{FONT_SOURCE}}
+// Generator version: {{VERSION}}
+// 
+
+const icons = {};
+
 async function getIcon(name) {
     if (!(name in icons)) {
         console.log(`Icon "num:${name}" not available`);
@@ -24,3 +33,5 @@ window.customIconsets["num"] = getIcon;
 window.customIcons = window.customIcons || {};
 window.customIcons["num"] = { getIcon, getIconList };
 
+const version = '{{VERSION}}';
+console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");

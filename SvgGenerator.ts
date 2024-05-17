@@ -15,13 +15,10 @@ export class SvgGenerator {
     
     font: string;
 
-    output: string;
-
     constructor(font: string, distDirectory: string, fileName: string) { 
         this.font = font;
         this.distDirectory = distDirectory;
         this.fileName = fileName;
-        this.output = '';
     }
 
     generateFile(min: number, max: number, step: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
@@ -46,21 +43,18 @@ export class SvgGenerator {
                 );
             }
         }
-    
-        this.output += fs.readFileSync('./header.partial.js');
-        this.output += `\n//\n// Font Source: ${this.font}\n// Generator version: ${version}\n\n`;
-        this.output += `var icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`;
-        this.output += '\n\n';
-        this.output += fs.readFileSync('./lookup.partial.js');
-        this.output += `const version = '${version}';`;
-        this.output += fs.readFileSync('./version.partial.js');
-        this.output += '\n';
+
+        const output = fs.readFileSync('./ha-number-icons.template.js').toString()
+                .replace('{{FONT_SOURCE}}', this.font)
+                .replace('{{VERSION}}', version)
+                .replace('const icons = {};', `const icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`)
+                .replace('{{VERSION}}', version);
 
         if (!fs.existsSync(this.distDirectory)) {
             fs.mkdirSync(this.distDirectory);
         }
     
-        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.js`, this.output, { flag: 'w' });
+        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.js`, output, { flag: 'w' });
         console.log(`Written to ${this.fileName}`);
     }
     

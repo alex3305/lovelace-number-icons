@@ -1,10 +1,11 @@
 // Generated ha-number-icons.js
 // By Alex van den Hoogen
-//
-// Font Source: node_modules/@fontsource/sofia-sans-condensed/files/sofia-sans-condensed-latin-700-normal.woff
+// 
+// Font source:       node_modules/@fontsource/sofia-sans-condensed/files/sofia-sans-condensed-latin-700-normal.woff
 // Generator version: 1.1.2
+// 
 
-var icons = {
+const icons = {
   "4": {
     "x": 0,
     "y": 0,
@@ -1400,4 +1401,3 @@ window.customIcons["num"] = { getIcon, getIconList };
 
 const version = '1.1.2';
 console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");
-
