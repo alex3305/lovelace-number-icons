@@ -5,14 +5,13 @@ const font = 'node_modules/@fontsource/sofia-sans-condensed/files/sofia-sans-con
 const distDirectory = 'dist'
 const distFile = 'ha-number-icons'
 
-let args = process.argv.slice(2);
-let svgGenerator = new SvgGenerator(font, distDirectory, distFile);
+const args = process.argv.slice(2);
+const svgGenerator = new SvgGenerator(font, distDirectory, distFile);
 
 if (args == undefined || args.length == 0) {
     console.error("ERROR: Run with either generate or test arguments...");
 } else if ('generate' == args[0]) {
     svgGenerator.generateFile(4, 100, 0.5, '°', [' Off ', ' Uit '], true);
-    svgGenerator.minifyGeneratedFile();
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
     console.log(svgGenerator.getSVG(font, '88.5°'));

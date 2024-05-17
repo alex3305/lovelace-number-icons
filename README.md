@@ -1,8 +1,23 @@
-# Home Assistant Number icons
+# Number Icons for Home Assistant
 
-This repo contains custom Home Assistant number icons.
+Adds SVG icons based on numbers for Home Assistant. These can be used for setting or showing temperatures within Home Assistant.
 
-## Installation instructions
+## Installing
+
+### HACS
+
+1. Add this repo as custom repo to HACS
+2. Install this component
+
+### Manual
+
+1. Copy the `dist/ha-number-icons.js` to your `/config/www/` directory
+2. Enable advanced mode to [register resources](https://developers.home-assistant.io/docs/frontend/custom-ui/registering-resources)
+3. Add `/local/ha-number-icons.js` as a custom resource
+
+## Development
+
+### Installation
 
 ```bash
 # Install all dependencies

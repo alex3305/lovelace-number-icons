@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3
+- Updated readme
+- Increased generated numbers to 100
+- Added ESLint
+- Cleanup repo and code
+
 ## 1.1.2
 - Add optional padding for lower values
 

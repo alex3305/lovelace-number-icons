@@ -1,7 +1,6 @@
 import * as fs from "node:fs";
 import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
-import { InlineFunctions, minify } from "uglify-js";
 import { version } from './package.json';
 
 export class SvgGenerator {
@@ -27,7 +26,7 @@ export class SvgGenerator {
 
     generateFile(min: number, max: number, step: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
         console.log('Generating...')
-        let icons = new Map<string, any>();
+        const icons = new Map<string, object>();
     
         for (let i = min; i <= max; i = i + step) {
             let text = `${i.toFixed(1).toString()}${suffix}`;
@@ -40,7 +39,7 @@ export class SvgGenerator {
         }
 
         if (additionalValues.length) {
-            for (let val of additionalValues) {
+            for (const val of additionalValues) {
                 icons.set(
                     val.toLowerCase().trim(),
                     this.textToSVG(this.font, val)
@@ -64,20 +63,6 @@ export class SvgGenerator {
         fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.js`, this.output, { flag: 'w' });
         console.log(`Written to ${this.fileName}`);
     }
-
-    minifyGeneratedFile(): void {
-        if (!fs.existsSync(this.distDirectory)) {
-            fs.mkdirSync(this.distDirectory);
-        }
-
-        if (this.output == '') {
-            console.error('ERROR: Please generate SVG data before minifying.');
-            return;
-        }
-
-        let result = minify(this.output);
-        fs.writeFileSync(`${this.distDirectory}${path.sep}${this.fileName}.min.js`, result.code, { flag: 'w' });
-    }
     
     getSVG(font: string, text: string): string {
         const ttsModule = TextToSVG.loadSync(font);
@@ -91,7 +76,7 @@ export class SvgGenerator {
         return ttsModule.getSVG(text, options);
     }
     
-    textToSVG(font: string, text: string): any {
+    textToSVG(font: string, text: string): object {
         const ttsModule = TextToSVG.loadSync(font);
         const options = {
             x: 0,
