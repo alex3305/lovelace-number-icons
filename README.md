@@ -42,6 +42,7 @@ card_mod:
       .shape::before {--tile-icon-color: transparent;}
 ```
 which yields me with:
+
 ![Example 2](images/example2.png)
 
 This will set the current temperature as an icon, the same way Apple does this with Homekit.
