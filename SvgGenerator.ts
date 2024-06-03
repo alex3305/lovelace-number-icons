@@ -23,15 +23,15 @@ export class SvgGenerator {
         this.prefix = prefix;
     }
 
-    generateFile(min: number, max: number, step: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
+    generateFile(min: number, max: number, step: number, decimals: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
         console.log('Generating...')
         const icons = new Map<string, object>();
     
         for (let i = min; i <= max; i = i + step) {
-            let text = `${i.toFixed(1).toString()}${suffix}`;
+            let text = `${i.toFixed(decimals).toString()}${suffix}`;
 
             if (padding && max >= 10 && i < 10) {
-                text = ` ${i.toFixed(1).toString()}${suffix} `;
+                text = ` ${i.toFixed(decimals).toString()}${suffix} `;
             }
 
             icons.set(i.toString(), this.textToSVG(this.font, text));

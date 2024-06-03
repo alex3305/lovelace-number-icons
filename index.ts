@@ -10,9 +10,9 @@ if (args == undefined || args.length == 0) {
     console.error("ERROR: Run with either generate or test arguments...");
 } else if ('generate' == args[0]) {
     new SvgGenerator(font, outputDir, 'degrees', 'deg')
-                    .generateFile(4, 75, 0.5, '°', [' Off ', ' Uit '], true);
+                    .generateFile(4, 75, 0.5, 1, '°', [' Off ', ' Uit '], true);
     new SvgGenerator(font, outputDir, 'numbers', 'num')
-                    .generateFile(0, 100, 1, '', [], true);
+                    .generateFile(0, 100, 1, 0, '', [], true);
 } else if ('test' == args[0]) {
     // Test with https://codebeautify.org/svg-viewer
     const svgGenerator = new SvgGenerator(font, outputDir, '', '');
