@@ -2,14 +2,14 @@
 // By Alex van den Hoogen
 // 
 // Font source:       {{FONT_SOURCE}}
-// Generator version: {{VERSION}}
 // 
 
+const iconPrefix = '{{PREFIX}}';
 const icons = {};
 
 async function getIcon(name) {
     if (!(name in icons)) {
-        console.log(`Icon "num:${name}" not available`);
+        console.log(`Icon "${iconPrefix}:${name}" not available`);
         return '';
     }
   
@@ -28,10 +28,7 @@ async function getIconList() {
 }
 
 window.customIconsets = window.customIconsets || {};
-window.customIconsets["num"] = getIcon;
+window.customIconsets[iconPrefix] = getIcon;
 
 window.customIcons = window.customIcons || {};
-window.customIcons["num"] = { getIcon, getIconList };
-
-const version = '{{VERSION}}';
-console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");
+window.customIcons[iconPrefix] = { getIcon, getIconList };

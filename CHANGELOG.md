@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+- Added a second icon set with prefix `num`
+- Moved the degrees icon set to prefix `deg`
+- Added esbuild for bundling
+
 ## 1.1.4
 - Moved to single template
 - Updated readme with usage

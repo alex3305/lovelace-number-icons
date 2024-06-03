@@ -1,13 +1,13 @@
 {
   "name": "ha-number-icons-generator",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Home Assistant Number Icons and Generator",
   "main": "build/index.js",
   "scripts": {
     "build": "npx tsc",
     "generate": "npx tsc && node build/index.js generate",
     "lint": "npx eslint *.ts",
-    "minify": "npm run generate && npx uglify-js dist/ha-number-icons.js -o dist/ha-number-icons.min.js -m toplevel",
+    "dist": "npm run generate && npx esbuild ha-number-icons.js --bundle --outdir=dist",
     "test": "npx tsc && node build/index.js test"
   },
   "keywords": [
@@ -19,14 +19,14 @@
   "license": "GPL-3.0-only",
   "dependencies": {
     "@fontsource/sofia-sans-condensed": "^5.0.13",
-    "@fontsource/sofia-sans-extra-condensed": "^5.0.12",
-    "uglify-js": "^3.17.4"
+    "@fontsource/sofia-sans-extra-condensed": "^5.0.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "@types/node": "^20.12.7",
     "@types/text-to-svg": "^3.1.4",
     "@types/uglify-js": "^3.17.5",
+    "esbuild": "0.21.4",
     "eslint": "^8.57.0",
     "globals": "^15.2.0",
     "text-to-svg": "github:shrhdk/text-to-svg",

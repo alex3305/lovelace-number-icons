@@ -1,7 +1,6 @@
 import * as fs from "node:fs";
 import path from "node:path";
 import TextToSVG, { Anchor } from 'text-to-svg';
-import { version } from './package.json';
 
 export class SvgGenerator {
 
@@ -15,10 +14,13 @@ export class SvgGenerator {
     
     font: string;
 
-    constructor(font: string, distDirectory: string, fileName: string) { 
+    prefix: string;
+
+    constructor(font: string, distDirectory: string, fileName: string, prefix: string) { 
         this.font = font;
         this.distDirectory = distDirectory;
         this.fileName = fileName;
+        this.prefix = prefix;
     }
 
     generateFile(min: number, max: number, step: number, suffix: string = '', additionalValues: string[] = [], padding: boolean = false): void {
@@ -46,9 +48,8 @@ export class SvgGenerator {
 
         const output = fs.readFileSync('./ha-number-icons.template.js').toString()
                 .replace('{{FONT_SOURCE}}', this.font)
-                .replace('{{VERSION}}', version)
-                .replace('const icons = {};', `const icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`)
-                .replace('{{VERSION}}', version);
+                .replace('{{PREFIX}}', this.prefix)
+                .replace('const icons = {};', `const icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`);
 
         if (!fs.existsSync(this.distDirectory)) {
             fs.mkdirSync(this.distDirectory);

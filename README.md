@@ -17,7 +17,7 @@ Adds SVG icons based on numbers for Home Assistant. These can be used for settin
 
 ## Usage
 
-Everywhere that you can use an icon, you can use `num:` prefix to get a number. Examples:
+Everywhere that you can use an icon, you can use `num:` prefix to get a number. Or `deg:`  to get the number with a degrees symbol. Examples:
 ![Example image](images/example.png)
 
 I also tend to combine this with card-mod to get a better view of the temperature. A full example:
@@ -30,7 +30,7 @@ card_mod:
     .: |
       {%- set is_heating = states(config.entity) != 'off' -%}
       :host { 
-        --card-mod-icon: num:{{ iif(is_heating, state_attr(config.entity, 'temperature'), 'off') }}
+        --card-mod-icon: deg:{{ iif(is_heating, state_attr(config.entity, 'temperature'), 'off') }}
       }
       ha-tile-icon { --mdc-icon-size: 40px;  }
     ha-tile-icon$: |
