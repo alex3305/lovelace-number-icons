@@ -1,7 +1,7 @@
 {
-  "name": "number-icons-generator",
+  "name": "ha-number-icons",
   "version": "1.2.1",
-  "description": "Home Assistant Number Icons and Generator",
+  "description": "Home Assistant Number Icons with Generator",
   "main": "build/index.js",
   "scripts": {
     "build": "npx tsc",
