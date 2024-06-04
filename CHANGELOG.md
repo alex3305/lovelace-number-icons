@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+- Remove `ha`-prefix and renamed to `number-icons`
+
 ## 1.2.0
 - Added a second icon set with prefix `num`
 - Moved the degrees icon set to prefix `deg`

@@ -1,13 +1,13 @@
 {
-  "name": "ha-number-icons-generator",
-  "version": "1.2.0",
+  "name": "number-icons-generator",
+  "version": "1.2.1",
   "description": "Home Assistant Number Icons and Generator",
   "main": "build/index.js",
   "scripts": {
     "build": "npx tsc",
     "generate": "npx tsc && node build/index.js generate",
     "lint": "npx eslint *.ts",
-    "dist": "npm run generate && npx esbuild ha-number-icons.js --bundle --outdir=dist",
+    "dist": "npm run generate && npx esbuild number-icons.js --bundle --outdir=dist",
     "test": "npx tsc && node build/index.js test"
   },
   "keywords": [

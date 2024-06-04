@@ -1773,8 +1773,8 @@
   window.customIcons[iconPrefix2] = { getIcon: getIcon2, getIconList: getIconList2 };
 
   // package.json
-  var version = "1.2.0";
+  var version = "1.2.1";
 
-  // ha-number-icons.js
+  // number-icons.js
   console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");
 })();

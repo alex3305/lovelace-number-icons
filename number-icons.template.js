@@ -1,4 +1,4 @@
-// Generated ha-number-icons.js
+// Generated number-icons.js
 // By Alex van den Hoogen
 // 
 // Font source:       {{FONT_SOURCE}}
