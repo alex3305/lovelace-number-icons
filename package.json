@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "generate": "npx tsc && node build/index.js generate",
     "lint": "npx eslint src/generator/*.ts",
-    "dist": "npm run generate && npx esbuild ./src/number-icons.bundle.js --bundle --outfile=dist/number-icons.js",
+    "dist": "npm run generate && npx esbuild ./src/number-icons.bundle.js --bundle --outfile=number-icons.js",
     "test": "npx tsc && node build/index.js test"
   },
   "keywords": [
