@@ -11,7 +11,7 @@ Adds SVG icons based on numbers for Home Assistant. These can be used for settin
 
 ### Manual
 
-1. Copy the `dist/number-icons.js` to your `/config/www/` directory
+1. Copy the `number-icons.js` to your `/config/www/` directory
 2. Enable advanced mode to [register resources](https://developers.home-assistant.io/docs/frontend/custom-ui/registering-resources)
 3. Add `/local/number-icons.js` as a custom resource
 
