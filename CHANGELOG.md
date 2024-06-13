@@ -3,6 +3,7 @@
 ## 1.2.1
 - Remove `ha`-prefix and renamed to `number-icons`
 - Moved sources to subdirectories
+- Renamed repository
 
 ## 1.2.0
 - Added a second icon set with prefix `num`
