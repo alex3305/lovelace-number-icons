@@ -1775,6 +1775,6 @@
   // package.json
   var version = "1.2.1";
 
-  // number-icons.js
+  // src/number-icons.bundle.js
   console.info(`%c HA Number Icons %c ${version}`, "color:white;background:green;", "");
 })();

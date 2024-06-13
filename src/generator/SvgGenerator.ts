@@ -46,7 +46,7 @@ export class SvgGenerator {
             }
         }
 
-        const output = fs.readFileSync('./number-icons.template.js').toString()
+        const output = fs.readFileSync('./src/number-icons.template.js').toString()
                 .replace('{{FONT_SOURCE}}', this.font)
                 .replace('{{PREFIX}}', this.prefix)
                 .replace('const icons = {};', `const icons = ${JSON.stringify(Object.fromEntries(icons), null, 2)}`);
