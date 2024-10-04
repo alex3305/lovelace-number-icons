@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.0
+- Add non-decimal numbers with degrees (Fixes #1)
+
 ## 1.2.1
 - Remove `ha`-prefix and renamed to `number-icons`
 - Moved sources to subdirectories

@@ -1,4 +1,5 @@
-import "../cache/degrees.js"
+import "../cache/decimal-degrees.js"
+import "../cache/non-decimal-degrees.js"
 import "../cache/numbers.js"
 import { version } from '../package.json';
 

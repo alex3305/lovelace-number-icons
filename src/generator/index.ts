@@ -9,8 +9,10 @@ const args = process.argv.slice(2);
 if (args == undefined || args.length == 0) {
     console.error("ERROR: Run with either generate or test arguments...");
 } else if ('generate' == args[0]) {
-    new SvgGenerator(font, outputDir, 'degrees', 'deg')
+    new SvgGenerator(font, outputDir, 'decimal-degrees', 'deg')
                     .generateFile(4, 75, 0.5, 1, '°', [' Off ', ' Uit '], true);
+    new SvgGenerator(font, outputDir, 'non-decimal-degrees', 'ndg')
+                    .generateFile(4, 75, 1, 0, '°', [], true);
     new SvgGenerator(font, outputDir, 'numbers', 'num')
                     .generateFile(0, 100, 1, 0, '', [], true);
 } else if ('test' == args[0]) {
