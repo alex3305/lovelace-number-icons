@@ -17,7 +17,13 @@ Adds SVG icons based on numbers for Home Assistant. These can be used for settin
 
 ## Usage
 
-Everywhere that you can use an icon, you can use `num:` prefix to get a number. Or `deg:`  to get the number with a degrees symbol. Examples:
+Everywhere that you can use an icon, you can use:
+
+- `num:`-prefix to get numbers. Ranging from 0-100 with steps of 1.
+- `deg:`-prefix to get numbers with a degree symbol and a decimal. Ranging from 4-75 with steps of 0.5.
+- `ndg:`-prefix to get numbers with a degree symbol without decimals. Ranging from 4-75 with steps of 1.
+
+An example:
 ![Example image](images/example.png)
 
 I also tend to combine this with card-mod to get a better view of the temperature. A full example:
