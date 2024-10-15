@@ -15,6 +15,12 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Update text-to-svg from master
+        run: |
+          rm -rf node_modules/text-to-svg
+          git clone --depth=1 https://github.com/congpeijun/text-to-svg.git -b congpeijun-patch-1 node_modules/text-to-svg
+          npm install --prefix node_modules/text-to-svg
+          npm run build --prefix node_modules/text-to-svg
       - name: Run lint
         run: npm run lint
       - name: Run dist
