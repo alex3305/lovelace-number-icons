@@ -29,7 +29,7 @@
     "esbuild": "0.21.4",
     "eslint": "^8.57.0",
     "globals": "^15.2.0",
-    "text-to-svg": "github:shrhdk/text-to-svg",
+    "text-to-svg": "github:congpeijun/text-to-svg#congpeijun-patch-1",
     "typescript": "^5.4.4",
     "typescript-eslint": "^7.9.0"
   }
