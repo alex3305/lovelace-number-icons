@@ -19,9 +19,3 @@ jobs:
         with:
           files: |-
             number-icons.js
-      - name: Publish package
-        uses: VAllens/gitea-publish-generic-packages@v1
-        with:
-          files: |-
-            number-icons.js
-          token: ${{ secrets.PACKAGES_TOKEN }}
