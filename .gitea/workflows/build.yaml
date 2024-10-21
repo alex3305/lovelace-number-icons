@@ -30,3 +30,6 @@ jobs:
       - name: Commit changes
         if: contains(github.ref, 'master')
         uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_user_name: Gitea Actions Bot
+          commit_user_email: actions.bot@alxx.nl
