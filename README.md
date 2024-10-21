@@ -47,6 +47,7 @@ card_mod:
       }
       .shape::before {--tile-icon-color: transparent;}
 ```
+
 which yields me with:
 
 ![Example 2](images/example2.png)
