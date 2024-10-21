@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: 21
           cache: "npm"
+          cache-dependency-path: "package-lock.json"
       - name: Install dependencies
         run: npm ci
       - name: Update text-to-svg from master
@@ -24,20 +25,8 @@ jobs:
                     -b congpeijun-patch-1 node_modules/text-to-svg
           npm install --prefix node_modules/text-to-svg
           npm run build --prefix node_modules/text-to-svg
-
-  build:
-    name: Build code
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
       - name: Run dist
         run: npm run dist
-
-  commit:
-    name: Re-commit build result
-    runs-on: ubuntu-latest
-    needs: build
-    if: contains(github.ref, 'master')
-    steps:
       - name: Commit changes
+        if: contains(github.ref, 'master')
         uses: stefanzweifel/git-auto-commit-action@v5
