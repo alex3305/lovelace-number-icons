@@ -1,6 +1,7 @@
 # Changelog
 
 ## v1.3.1
+
 - Updated Gitea Actions
 - Change version numbers to v1.3.1 format
 
