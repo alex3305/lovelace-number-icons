@@ -4,14 +4,21 @@ name: Lint
 on: [push]
 
 jobs:
-  lint:
-    name: Lint
+  yamllint:
+    name: YAMLLint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run yamllint
         uses: frenck/action-yamllint@v1.5.0
+
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
