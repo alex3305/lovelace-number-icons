@@ -2302,7 +2302,7 @@
   window.customIcons[iconPrefix3] = { getIcon: getIcon3, getIconList: getIconList3 };
 
   // package.json
-  var version = "1.2.1";
+  var version = "1.3.1";
 
   // src/number-icons.bundle.js
   console.info(
