@@ -9,13 +9,13 @@ on:
 
 jobs:
   release:
-    name: Create additional Tags
+    name: Release package
     runs-on: ubuntu-latest
     steps:
       - name: Check out code from Gitea
         uses: actions/checkout@v4
       - name: Create release
-        uses: actions/gitea-release-action@v1
+        uses: akkuman/gitea-release-action@v1
         with:
           files: |-
             number-icons.js
