@@ -1,0 +1,22 @@
+---
+name: Generate additional tags
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  additional-tags:
+    name: Create additional Tags
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code from Gitea
+        uses: actions/checkout@v4
+      - name: Create additional tags
+        uses: vweevers/additional-tags-action@v2

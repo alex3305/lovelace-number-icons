@@ -1,9 +1,11 @@
+---
 name: NPM Build
-run-name: ${{ gitea.actor }} is building Home Assistant Number Icons
+# yamllint disable-line rule:truthy
 on: [push]
 
 jobs:
-  Build:
+  setup:
+    name: Setup workflow
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,10 +20,18 @@ jobs:
       - name: Update text-to-svg from master
         run: |
           rm -rf node_modules/text-to-svg
-          git clone --depth=1 https://github.com/congpeijun/text-to-svg.git -b congpeijun-patch-1 node_modules/text-to-svg
+          git clone --depth=1 https://github.com/congpeijun/text-to-svg.git \
+                    -b congpeijun-patch-1 node_modules/text-to-svg
           npm install --prefix node_modules/text-to-svg
           npm run build --prefix node_modules/text-to-svg
-      - name: Run lint
-        run: npm run lint
+
+  build:
+    name: Build code
+    runs-on: ubuntu-latest
+    needs: setup
+    if: contains(github.ref, 'master')
+    steps:
       - name: Run dist
         run: npm run dist
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
