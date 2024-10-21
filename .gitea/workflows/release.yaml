@@ -24,3 +24,4 @@ jobs:
         with:
           files: |-
             number-icons.js
+          token: ${{ secrets.GITHUB_TOKEN }}
