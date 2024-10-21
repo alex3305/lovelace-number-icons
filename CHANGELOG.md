@@ -1,8 +1,12 @@
 # Changelog
 
+## v1.3.1
+- Updated Gitea Actions
+- Change version numbers to v1.3.1 format
+
 ## 1.3.0
 
-- Add non-decimal numbers with degrees with prefix `ndg:` (Fixes #1)
+- Add non-decimal numbers with degrees with prefix `ndg:` (Fixes GitHub #1)
 
 ## 1.2.1
 
