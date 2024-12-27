@@ -31,6 +31,6 @@
     "globals": "^15.2.0",
     "text-to-svg": "github:congpeijun/text-to-svg#congpeijun-patch-1",
     "typescript": "^5.4.4",
-    "typescript-eslint": "^7.9.0"
+    "typescript-eslint": "^8.0.0"
   }
 }
