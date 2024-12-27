@@ -27,7 +27,7 @@
     "@types/text-to-svg": "^3.1.4",
     "@types/uglify-js": "^3.17.5",
     "esbuild": "0.24.2",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "globals": "^15.2.0",
     "text-to-svg": "github:congpeijun/text-to-svg#congpeijun-patch-1",
     "typescript": "^5.4.4",
